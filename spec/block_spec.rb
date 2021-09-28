@@ -131,7 +131,7 @@ describe Block do
       let(:b)    { Block.new(110, 190) }
 
       it "returns a" do
-        pending "Needs to be implemented"
+        result.should eq([a])
       end
     end
 
@@ -140,7 +140,7 @@ describe Block do
       let(:b)   { Block.new(90, 210) }
 
       it "returns b" do
-        pending "Needs to be implemented"
+        result.should eq([b])
       end
     end
 
