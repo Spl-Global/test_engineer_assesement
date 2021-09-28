@@ -105,13 +105,13 @@ describe Block do
 
     context "when number stay between start and end" do
       it "returns true" do
-        pending "Needs to be implemented"
+        a.include?(3).should eq(true)
       end
     end
 
     context "when number out of start and end" do
       it "returns false" do
-        pending "Needs to be implemented"
+        a.include?(3).should eq(true)
       end
     end
   end
