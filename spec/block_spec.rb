@@ -72,6 +72,34 @@ describe Block do
     end
   end
 
+  describe "spaceship" do
+    let(:a) { Block.new(2,4) }
+
+    context "when both a start and end are bigger than b" do
+      let(:b) { Block.new(1,2) }
+
+      it "returns 1" do
+        pending "Needs to be implemented"
+      end
+    end
+
+    context "when both a start and end are smaller than b" do
+      let(:b) { Block.new(3,4) }
+
+      it "returns -1" do
+        pending "Needs to be implemented"
+      end
+    end
+
+    context "when both a start and end are equal than b" do
+      let(:b) { Block.new(2,4) }
+
+      it "returns 0" do
+        pending "Needs to be implemented"
+      end
+    end
+  end
+
   # ============
   # = Addition =
   # ============
