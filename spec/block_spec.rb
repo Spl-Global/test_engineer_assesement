@@ -100,6 +100,22 @@ describe Block do
     end
   end
 
+  describe "include?" do
+    let(:a) { Block.new(2,6) }
+
+    context "when number stay between start and end" do
+      it "returns true" do
+        pending "Needs to be implemented"
+      end
+    end
+
+    context "when number out of start and end" do
+      it "returns false" do
+        pending "Needs to be implemented"
+      end
+    end
+  end
+
   # ============
   # = Addition =
   # ============
