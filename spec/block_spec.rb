@@ -79,7 +79,7 @@ describe Block do
       let(:b) { Block.new(1,2) }
 
       it "returns 1" do
-        pending "Needs to be implemented"
+        (a <=> b).should eq(1)
       end
     end
 
@@ -87,7 +87,7 @@ describe Block do
       let(:b) { Block.new(3,4) }
 
       it "returns -1" do
-        pending "Needs to be implemented"
+        (a <=> b).should eq(-1)
       end
     end
 
@@ -95,7 +95,7 @@ describe Block do
       let(:b) { Block.new(2,4) }
 
       it "returns 0" do
-        pending "Needs to be implemented"
+        (a <=> b).should eq(0)
       end
     end
   end
