@@ -208,22 +208,15 @@ describe Block do
     context "with positive value padding (10, 20)" do
       let(:top)    { 10 }
       let(:bottom) { 20 }
-      its(:start)  {
-        pending "Needs to be implemented" }
-      its(:end)    {
-        pending "Needs to be implemented"
-      }
+      its(:start)  { should eq(90) }
+      its(:end)    { should eq(220) }
     end
 
     context "with negative value padding (-10, -20)" do
       let(:top)    { -10 }
       let(:bottom) { -20 }
-      its(:start)  {
-        #Code Here
-      }
-      its(:end)    {
-        pending "Needs to be implemented"
-      }
+      its(:start)  { should eq(100) }
+      its(:end)    { should eq(200) }
     end
   end
 
