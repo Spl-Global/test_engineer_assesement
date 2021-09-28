@@ -149,15 +149,15 @@ describe Block do
       let(:b)   { Block.new(90, 110) }
 
       it "returns one block" do
-        pending "Needs to be implemented"
+        result.size.should eq(1)
       end
 
       it "begins with b" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(90)
       end
 
       it "ends with a" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(200)
       end
     end
 
@@ -166,15 +166,15 @@ describe Block do
       let(:b)   { Block.new(190, 210) }
 
       it "returns one block" do
-        pending "Needs to be implemented"
+        result.size.should eq(1)
       end
 
       it "begins with a" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(100)
       end
 
       it "ends with b" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(210)
       end
     end
 
