@@ -37,11 +37,13 @@ describe Block do
 
   describe '#length' do
     it 'is 0 when start == end' do
-      pending "Needs to be implemented"
+      block = Block.new(2, 2)
+      block.length.should eq(0)
     end
 
     it 'is 1 when end == (start + 1)' do
-      pending "Needs to be implemented"
+      block = Block.new(1, 2)
+      block.length.should eq(1)
     end
   end
 
@@ -106,83 +108,83 @@ describe Block do
       it "returns one block" do
         pending "Needs to be implemented"
       end
-      
+
       it "begins with b" do
         pending "Needs to be implemented"
       end
-      
+
       it "ends with a" do
         pending "Needs to be implemented"
       end
     end
-    
+
     context "when b subsumes a's ending" do
-      
+
       let(:b)   { Block.new(190, 210) }
-      
+
       it "returns one block" do
         pending "Needs to be implemented"
       end
-      
+
       it "begins with a" do
         pending "Needs to be implemented"
       end
-      
+
       it "ends with b" do
         pending "Needs to be implemented"
       end
     end
-    
+
     context "when there is no overlap" do
-      
+
       let(:b)   { Block.new(10, 20) }
-      
+
       it "returns the original blocks" do
         pending "Needs to be implemented"
       end
     end
-    
+
     context "when a == b" do
-      
+
       let(:b)  { Block.new(a.start, a.end) }
-      
+
       it "returns a" do
         pending "Needs to be implemented"
       end
     end
   end
-  
+
   # ===========
   # = Padding =
   # ===========
-  
+
   describe "padding" do
     let(:a)         { Block.new(100, 200) }
     subject         { a.padded(top, bottom) }
-    
+
     context "with positive value padding (10, 20)" do
       let(:top)    { 10 }
       let(:bottom) { 20 }
-      its(:start)  { 
+      its(:start)  {
         pending "Needs to be implemented" }
-      its(:end)    { 
-        pending "Needs to be implemented" 
+      its(:end)    {
+        pending "Needs to be implemented"
       }
     end
-    
+
     context "with negative value padding (-10, -20)" do
       let(:top)    { -10 }
       let(:bottom) { -20 }
-      its(:start)  { 
-        #Code Here 
+      its(:start)  {
+        #Code Here
       }
-      its(:end)    { 
-        pending "Needs to be implemented" 
+      its(:end)    {
+        pending "Needs to be implemented"
       }
     end
   end
-  
-  
+
+
   # ===============
   # = Subtraction =
   # ===============
@@ -200,43 +202,43 @@ describe Block do
       it "returns two blocks" do
         pending "Needs to be implemented"
       end
-      
+
       describe "first block" do
         it "begins at the original point" do
           pending "Needs to be implemented"
         end
-        
+
         it "ends at the start of b" do
           pending "Needs to be implemented"
         end
       end
-      
+
       describe "second block" do
         it "begins at the end of b" do
           pending "Needs to be implemented"
         end
-        
+
         it "ends at the original point" do
           pending "Needs to be implemented"
         end
       end
     end
-    
+
     context "when b encompasses a" do
       let(:b) { Block.new(90, 210) }
-      
+
       it "returns a nil block" do
         pending "Needs to be implemented"
       end
     end
-    
+
     context "when b covers a with a shared beginning" do
       let(:b) { Block.new(a.start, a.end + 10) }
       it "returns a nil block" do
         pending "Needs to be implemented"
       end
     end
-    
+
     context "when b covers a with a shared ending" do
       let(:b) { Block.new(a.start - 10, a.end) }
       it "returns a nil block" do
@@ -247,37 +249,37 @@ describe Block do
     context "when b encompasses a's origin" do
 
       let(:b) { Block.new(a.start, a.start + 10) }
-      
+
       it "returns a single block" do
         pending "Needs to be implemented"
       end
-      
+
       it "begins at the end of b" do
         pending "Needs to be implemented"
       end
-      
+
       it "ends at the original point" do
         pending "Needs to be implemented"
       end
     end
 
     context "when b encompasses a's ending" do
-      
+
       let(:b) { Block.new(190, 200) }
-      
+
       it "returns a single block" do
         pending "Needs to be implemented"
       end
-      
+
       it "begins at the original point" do
         pending "Needs to be implemented"
       end
-      
+
       it "ends at the start of b" do
         pending "Needs to be implemented"
       end
     end
-    
+
     context "when there is no overlap" do
       let(:b) { Block.new(0, 100) }
 
@@ -285,7 +287,7 @@ describe Block do
         pending "Needs to be implemented"
       end
     end
-    
+
     context "when b == a" do
       let(:b) { Block.new(a.start, a.end) }
 
@@ -316,22 +318,22 @@ describe Block do
     it "returns each of the remaining spaces" do
       pending "Needs to be implemented"
     end
-    
+
     describe "first block" do
       it "starts where b ended" do
         pending "Needs to be implemented"
       end
-      
+
       it "ends where c starts" do
         pending "Needs to be implemented"
       end
     end
-    
+
     describe "second block" do
       it "starts where c ended" do
         pending "Needs to be implemented"
       end
-      
+
       it "ends where d starts" do
         pending "Needs to be implemented"
       end
@@ -360,32 +362,32 @@ describe Block do
     it "collapses contiguous and overlapping blocks" do
       pending "Needs to be implemented"
     end
-    
+
     describe "first block (collapsed contiguous)" do
       it "start aligns with start of A" do
         pending "Needs to be implemented"
       end
-      
+
       it "end aligns with end of B" do
         pending "Needs to be implemented"
       end
     end
-    
+
     describe "second block (collapsed overlapping)" do
       it "start aligns with start of C" do
         pending "Needs to be implemented"
       end
-      
+
       it "end aligns with end of D" do
         pending "Needs to be implemented"
       end
     end
-    
+
     describe "third block (isolated)" do
       it "starts as it was" do
         pending "Needs to be implemented"
       end
-      
+
       it "ends as it was" do
         pending "Needs to be implemented"
       end
@@ -408,19 +410,19 @@ describe Block do
       it "trims the top of the block" do
         pending "Needs to be implemented"
       end
-      
+
       it "keeps the original end" do
         pending "Needs to be implemented"
       end
     end
-    
+
     context "when the limited block overlaps with the limiter's end" do
       let(:a) { Block.new(90, 110) }
-      
+
       it "trims the bottom of the block to the limiter's end" do
         pending "Needs to be implemented"
       end
-      
+
       it "keeps the original beginning" do
         pending "Needs to be implemented"
       end

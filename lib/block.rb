@@ -130,7 +130,7 @@ class Block
   # =============
   # = Operators =
   # =============
-  
+
   # Return the result of adding the other Block (or Blocks) to self.
 
   def add (other)
@@ -141,7 +141,7 @@ class Block
       [Block.new([top, other.top].min, [bottom, other.bottom].max)]
     end
   end
-  
+
   # Return the result of subtracting the other Block (or Blocks) from self.
 
   def subtract (other)
