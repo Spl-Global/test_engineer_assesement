@@ -183,7 +183,7 @@ describe Block do
       let(:b)   { Block.new(10, 20) }
 
       it "returns the original blocks" do
-        pending "Needs to be implemented"
+        result.should eq([b, a])
       end
     end
 
