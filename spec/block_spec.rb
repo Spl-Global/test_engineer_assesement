@@ -59,7 +59,7 @@ describe Block do
       let(:b) { Block.new(1,2) }
 
       it "is equal" do
-        pending "Needs to be implemented"
+        (a == b).should eq(true)
       end
     end
 
@@ -67,10 +67,9 @@ describe Block do
       let(:b) { Block.new(1,3) }
 
       it "is not equal" do
-        pending "Needs to be implemented"
+        (a == b).should eq(false)
       end
     end
-
   end
 
   # ============
