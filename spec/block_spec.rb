@@ -352,26 +352,26 @@ describe Block do
     let(:result) { a - others }
 
     it "returns each of the remaining spaces" do
-      pending "Needs to be implemented"
+      result.should eq([Block.new(110, 130), Block.new(140, 180)])
     end
 
     describe "first block" do
       it "starts where b ended" do
-        pending "Needs to be implemented"
+        result.first.start.should eq(b.end)
       end
 
       it "ends where c starts" do
-        pending "Needs to be implemented"
+        result.first.end.should eq(c.start)
       end
     end
 
     describe "second block" do
       it "starts where c ended" do
-        pending "Needs to be implemented"
+        result.last.start.should eq(c.end)
       end
 
       it "ends where d starts" do
-        pending "Needs to be implemented"
+        result.last.end.should eq(d.start)
       end
     end
 
