@@ -357,21 +357,21 @@ describe Block do
 
     describe "first block" do
       it "starts where b ended" do
-        expect(result.first.start).to eq(b.end)
+        expect(result.first).to have_attributes(start: b.end)
       end
 
       it "ends where c starts" do
-        expect(result.first.end).to eq(c.start)
+        expect(result.first).to have_attributes(end: c.start)
       end
     end
 
     describe "second block" do
       it "starts where c ended" do
-        expect(result[1].start).to eq(c.end)
+        expect(result[1]).to have_attributes(start: c.end)
       end
 
       it "ends where d starts" do
-        expect(result[1].end).to eq(d.start)
+        expect(result[1]).to have_attributes(end: d.start)
       end
     end
 
