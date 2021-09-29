@@ -207,26 +207,26 @@ describe Block do
       let(:b)    { Block.new(150, 170) }
 
       it "returns two blocks" do
-        pending "Needs to be implemented"
+        result.count.should eq(2)
       end
       
       describe "first block" do
         it "begins at the original point" do
-          pending "Needs to be implemented"
+          result.first.top.should eq(a.top)
         end
         
         it "ends at the start of b" do
-          pending "Needs to be implemented"
+          result.first.bottom.should eq(b.top)
         end
       end
       
       describe "second block" do
         it "begins at the end of b" do
-          pending "Needs to be implemented"
+          result.last.top.should eq(b.bottom)
         end
         
         it "ends at the original point" do
-          pending "Needs to be implemented"
+          result.last.bottom.should eq(a.bottom)
         end
       end
     end
@@ -235,21 +235,21 @@ describe Block do
       let(:b) { Block.new(90, 210) }
       
       it "returns a nil block" do
-        pending "Needs to be implemented"
+        result.should eq([])
       end
     end
     
     context "when b covers a with a shared beginning" do
       let(:b) { Block.new(a.start, a.end + 10) }
       it "returns a nil block" do
-        pending "Needs to be implemented"
+        result.should eq([])
       end
     end
     
     context "when b covers a with a shared ending" do
       let(:b) { Block.new(a.start - 10, a.end) }
       it "returns a nil block" do
-        pending "Needs to be implemented"
+        result.should eq([])
       end
     end
 
@@ -258,15 +258,15 @@ describe Block do
       let(:b) { Block.new(a.start, a.start + 10) }
       
       it "returns a single block" do
-        pending "Needs to be implemented"
+        result.count.should eq(1)
       end
       
       it "begins at the end of b" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(b.bottom)
       end
       
       it "ends at the original point" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(a.bottom)
       end
     end
 
@@ -275,15 +275,15 @@ describe Block do
       let(:b) { Block.new(190, 200) }
       
       it "returns a single block" do
-        pending "Needs to be implemented"
+        result.count.should eq(1)
       end
       
       it "begins at the original point" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(a.top)
       end
       
       it "ends at the start of b" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(b.top)
       end
     end
     
@@ -291,7 +291,7 @@ describe Block do
       let(:b) { Block.new(0, 100) }
 
       it "returns self" do
-        pending "Needs to be implemented"
+        result.first.should eq(a)
       end
     end
     
@@ -299,7 +299,7 @@ describe Block do
       let(:b) { Block.new(a.start, a.end) }
 
       it "returns empty" do
-        pending "Needs to be implemented"
+        result.should eq([])
       end
     end
   end
