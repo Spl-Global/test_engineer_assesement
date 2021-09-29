@@ -241,21 +241,21 @@ describe Block do
 
       describe "first block" do
         it "begins at the original point" do
-          expect(result.first.top).to eq(a.start)
+          expect(result.first).to have_attributes(start: a.start)
         end
 
         it "ends at the start of b" do
-          expect(result.first.end).to eq(b.start)
+          expect(result.first).to have_attributes(end: b.start)
         end
       end
 
       describe "second block" do
         it "begins at the end of b" do
-          expect(result.last.start).to eq(b.end)
+          expect(result[1]).to have_attributes(start: b.end)
         end
 
         it "ends at the original point" do
-          expect(result.last.end).to eq(a.end)
+          expect(result[1]).to have_attributes(end: a.end)
         end
       end
     end
@@ -264,21 +264,21 @@ describe Block do
       let(:b) { Block.new(90, 210) }
 
       it "returns a nil block" do
-        expect(result.first).to eq(nil)
+        expect(result.first).to be_nil
       end
     end
 
     context "when b covers a with a shared beginning" do
       let(:b) { Block.new(a.start, a.end + 10) }
       it "returns a nil block" do
-        expect(result.first).to eq(nil)
+        expect(result.first).to be_nil
       end
     end
 
     context "when b covers a with a shared ending" do
       let(:b) { Block.new(a.start - 10, a.end) }
       it "returns a nil block" do
-        expect(result.first).to eq(nil)
+        expect(result.first).to be_nil
       end
     end
 
@@ -291,11 +291,11 @@ describe Block do
       end
 
       it "begins at the end of b" do
-        expect(result.first.start).to eq(b.end)
+        expect(result.first).to have_attributes(start: b.end)
       end
 
       it "ends at the original point" do
-        expect(result.first.end).to eq(a.end)
+        expect(result.first).to have_attributes(end: a.end)
       end
     end
 
@@ -308,11 +308,11 @@ describe Block do
       end
 
       it "begins at the original point" do
-        expect(result.first.start).to eq(a.start)
+        expect(result.first).to have_attributes(start: a.start)
       end
 
       it "ends at the start of b" do
-        expect(result.first.end).to eq(b.start)
+        expect(result.first).to have_attributes(end: b.start)
       end
     end
 
@@ -320,7 +320,7 @@ describe Block do
       let(:b) { Block.new(0, 100) }
 
       it "returns self" do
-        expect(result).to eq([a])
+        expect(result).to contain_exactly(a)
       end
     end
 
@@ -328,7 +328,7 @@ describe Block do
       let(:b) { Block.new(a.start, a.end) }
 
       it "returns empty" do
-        expect(result).to eq([])
+        expect(result).to be_empty
       end
     end
   end
