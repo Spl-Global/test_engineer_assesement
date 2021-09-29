@@ -367,36 +367,36 @@ describe Block do
     let(:result)  { a.merge([b,c,d,e]) }
 
     it "collapses contiguous and overlapping blocks" do
-      pending "Needs to be implemented"
+      result.count.should eq(3)
     end
     
     describe "first block (collapsed contiguous)" do
       it "start aligns with start of A" do
-        pending "Needs to be implemented"
+        result.first.top.should eq (a.top)
       end
       
       it "end aligns with end of B" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq (b.bottom)
       end
     end
     
     describe "second block (collapsed overlapping)" do
       it "start aligns with start of C" do
-        pending "Needs to be implemented"
+        result[1].top.should eq (c.top)
       end
       
       it "end aligns with end of D" do
-        pending "Needs to be implemented"
+        result[1].bottom.should eq (d.bottom)
       end
     end
     
     describe "third block (isolated)" do
       it "starts as it was" do
-        pending "Needs to be implemented"
+        result.last.top.should eq(e.top)
       end
       
       it "ends as it was" do
-        pending "Needs to be implemented"
+        result.last.bottom.should eq(e.bottom)
       end
     end
 
@@ -414,12 +414,13 @@ describe Block do
 
     context "when the limited block overlaps with the limiter's beginning" do
       let(:a)       { Block.new(-10, 10) }
-      it "trims the top of the block" do
-        pending "Needs to be implemented"
+
+      it "keeps the max top" do
+        result.top.should eq (b.top)
       end
       
-      it "keeps the original end" do
-        pending "Needs to be implemented"
+      it "keeps the min bottom" do
+        result.bottom.should eq (a.bottom)
       end
     end
     
@@ -427,11 +428,11 @@ describe Block do
       let(:a) { Block.new(90, 110) }
       
       it "trims the bottom of the block to the limiter's end" do
-        pending "Needs to be implemented"
+        result.bottom.should eq (b.bottom)
       end
       
       it "keeps the original beginning" do
-        pending "Needs to be implemented"
+        result.top.should eq (a.top)
       end
     end
 
