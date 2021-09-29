@@ -100,18 +100,18 @@ describe Block do
     end
   end
 
-  describe "include?" do
+  describe "inclusion" do
     let(:a) { Block.new(2,6) }
 
     context "when number stay between start and end" do
-      it "returns true" do
-        expect(a.include?(3)).to eq(true)
+      it "is included" do
+        expect(a).to include(3)
       end
     end
 
     context "when number out of start and end" do
-      it "returns false" do
-        expect(a.include?(8)).to eq(false)
+      it "is not included" do
+        expect(a).not_to include(8)
       end
     end
   end
