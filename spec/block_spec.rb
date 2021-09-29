@@ -90,7 +90,7 @@ describe Block do
       let(:b)    { Block.new(110, 190) }
 
       it "returns a" do
-        pending "Needs to be implemented"
+        result.first.should eq(a)
       end
     end
 
@@ -99,7 +99,7 @@ describe Block do
       let(:b)   { Block.new(90, 210) }
 
       it "returns b" do
-        pending "Needs to be implemented"
+        result.first.should eq(b)
       end
     end
 
@@ -107,16 +107,17 @@ describe Block do
 
       let(:b)   { Block.new(90, 110) }
 
-      it "returns one block" do
-        pending "Needs to be implemented"
+      it "returns one block begins with b and ends with a" do
+        result.first.top.should eq(b.top)
+        result.first.bottom.should eq(a.bottom)
       end
       
       it "begins with b" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(b.top)
       end
       
       it "ends with a" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(a.bottom)
       end
     end
     
@@ -124,16 +125,17 @@ describe Block do
       
       let(:b)   { Block.new(190, 210) }
       
-      it "returns one block" do
-        pending "Needs to be implemented"
+      it "returns one block begins with a and ends with b" do
+        result.first.top.should eq(a.top)
+        result.first.bottom.should eq(b.bottom)
       end
       
       it "begins with a" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(a.top)
       end
       
       it "ends with b" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(b.bottom)
       end
     end
     
@@ -142,7 +144,8 @@ describe Block do
       let(:b)   { Block.new(10, 20) }
       
       it "returns the original blocks" do
-        pending "Needs to be implemented"
+        result.first.should eq(b)
+        result.last.should eq(a)
       end
     end
     
@@ -150,8 +153,9 @@ describe Block do
       
       let(:b)  { Block.new(a.start, a.end) }
       
-      it "returns a" do
-        pending "Needs to be implemented"
+      it "only returns a" do
+        result.first.should eq(a)
+        result.last.should eq(a)
       end
     end
   end
