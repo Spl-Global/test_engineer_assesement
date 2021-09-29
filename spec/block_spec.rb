@@ -36,12 +36,16 @@ describe Block do
   # ===========
 
   describe '#length' do
+    let(:a) { Block.new(1, 1) }
+
     it 'is 0 when start == end' do
-      pending "Needs to be implemented"
+      a.length.should eq(0)
     end
 
+    let(:b) { Block.new(1, 2) }
+
     it 'is 1 when end == (start + 1)' do
-      pending "Needs to be implemented"
+      b.length.should eq(1)
     end
   end
 
