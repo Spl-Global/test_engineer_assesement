@@ -396,36 +396,36 @@ describe Block do
     let(:result)  { a.merge([b,c,d,e]) }
 
     it "collapses contiguous and overlapping blocks" do
-      expect(result).to eq([Block.new(10, 25), Block.new(30, 45), Block.new(55, 65)])
+      expect(result).to match_array([Block.new(10, 25), Block.new(30, 45), Block.new(55, 65)])
     end
 
     describe "first block (collapsed contiguous)" do
       it "start aligns with start of A" do
-        expect(result[0].start).to eq(a.start)
+        expect(result[0]).to have_attributes(start: a.start)
       end
 
       it "end aligns with end of B" do
-        expect(result[0].end).to eq(b.end)
+        expect(result[0]).to have_attributes(end: b.end)
       end
     end
 
     describe "second block (collapsed overlapping)" do
       it "start aligns with start of C" do
-        expect(result[1].start).to eq(c.start)
+        expect(result[1]).to have_attributes(start: c.start)
       end
 
       it "end aligns with end of D" do
-        expect(result[1].end).to eq(d.end)
+        expect(result[1]).to have_attributes(end: d.end)
       end
     end
 
     describe "third block (isolated)" do
       it "starts as it was" do
-        expect(result[2].start).to eq(e.start)
+        expect(result[2]).to have_attributes(start: e.start)
       end
 
       it "ends as it was" do
-        expect(result[2].end).to eq(e.end)
+        expect(result[2]).to have_attributes(end: e.end)
       end
     end
 
