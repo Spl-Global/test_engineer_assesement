@@ -444,11 +444,11 @@ describe Block do
     context "when the limited block overlaps with the limiter's beginning" do
       let(:a)       { Block.new(-10, 10) }
       it "trims the top of the block" do
-        pending "Needs to be implemented"
+        result.top.should eq(0)
       end
 
       it "keeps the original end" do
-        pending "Needs to be implemented"
+        result.end.should eq(a.end)
       end
     end
 
@@ -456,11 +456,11 @@ describe Block do
       let(:a) { Block.new(90, 110) }
 
       it "trims the bottom of the block to the limiter's end" do
-        pending "Needs to be implemented"
+        result.bottom.should eq(b.end)
       end
 
       it "keeps the original beginning" do
-        pending "Needs to be implemented"
+        result.start.should eq(a.start)
       end
     end
 
