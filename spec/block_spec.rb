@@ -131,7 +131,7 @@ describe Block do
       let(:b)    { Block.new(110, 190) }
 
       it "returns a" do
-        expect(result).to eq([a])
+        expect(result).to contain_exactly(a)
       end
     end
 
@@ -140,7 +140,7 @@ describe Block do
       let(:b)   { Block.new(90, 210) }
 
       it "returns b" do
-        expect(result).to eq([b])
+        expect(result).to contain_exactly(b)
       end
     end
 
@@ -153,11 +153,11 @@ describe Block do
       end
 
       it "begins with b" do
-        expect(result.first.top).to eq(90)
+        expect(result.first).to have_attributes(start: b.start)
       end
 
       it "ends with a" do
-        expect(result.first.bottom).to eq(200)
+        expect(result.first).to have_attributes(end: a.end)
       end
     end
 
@@ -170,11 +170,11 @@ describe Block do
       end
 
       it "begins with a" do
-        expect(result.first.top).to eq(100)
+        expect(result.first).to have_attributes(start: a.start)
       end
 
       it "ends with b" do
-        expect(result.first.bottom).to eq(210)
+        expect(result.first).to have_attributes(end: b.end)
       end
     end
 
@@ -183,7 +183,7 @@ describe Block do
       let(:b)   { Block.new(10, 20) }
 
       it "returns the original blocks" do
-        expect(result).to eq([b, a])
+        expect(result).to match_array([b, a])
       end
     end
 
@@ -192,7 +192,7 @@ describe Block do
       let(:b)  { Block.new(a.start, a.end) }
 
       it "returns a" do
-        expect(result).to eq([a])
+        expect(result).to contain_exactly(a)
       end
     end
   end
