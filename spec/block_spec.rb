@@ -396,36 +396,36 @@ describe Block do
     let(:result)  { a.merge([b,c,d,e]) }
 
     it "collapses contiguous and overlapping blocks" do
-      pending "Needs to be implemented"
+      result.should eq([Block.new(10, 25), Block.new(30, 45), Block.new(55, 65)])
     end
 
     describe "first block (collapsed contiguous)" do
       it "start aligns with start of A" do
-        pending "Needs to be implemented"
+        result[0].start.should eq(a.start)
       end
 
       it "end aligns with end of B" do
-        pending "Needs to be implemented"
+        result[0].end.should eq(b.end)
       end
     end
 
     describe "second block (collapsed overlapping)" do
       it "start aligns with start of C" do
-        pending "Needs to be implemented"
+        result[1].start.should eq(c.start)
       end
 
       it "end aligns with end of D" do
-        pending "Needs to be implemented"
+        result[1].end.should eq(d.end)
       end
     end
 
     describe "third block (isolated)" do
       it "starts as it was" do
-        pending "Needs to be implemented"
+        result[2].start.should eq(e.start)
       end
 
       it "ends as it was" do
-        pending "Needs to be implemented"
+        result[2].end.should eq(e.end)
       end
     end
 
