@@ -444,11 +444,11 @@ describe Block do
     context "when the limited block overlaps with the limiter's beginning" do
       let(:a)       { Block.new(-10, 10) }
       it "trims the top of the block" do
-        expect(result.top).to eq(0)
+        expect(result).to have_attributes(top: 0)
       end
 
       it "keeps the original end" do
-        expect(result.end).to eq(a.end)
+        expect(result).to have_attributes(end: a.end)
       end
     end
 
@@ -456,11 +456,11 @@ describe Block do
       let(:a) { Block.new(90, 110) }
 
       it "trims the bottom of the block to the limiter's end" do
-        expect(result.bottom).to eq(b.end)
+        expect(result).to have_attributes(bottom: b.end)
       end
 
       it "keeps the original beginning" do
-        expect(result.start).to eq(a.start)
+        expect(result).to have_attributes(start: a.start)
       end
     end
 
