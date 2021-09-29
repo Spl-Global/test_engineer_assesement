@@ -172,9 +172,10 @@ describe Block do
       let(:top)    { 10 }
       let(:bottom) { 20 }
       its(:start)  { 
-        pending "Needs to be implemented" }
+        subject.top.should eq(a.start - top)
+      }
       its(:end)    { 
-        pending "Needs to be implemented" 
+        subject.bottom.should eq(a.bottom + bottom)
       }
     end
     
@@ -182,10 +183,10 @@ describe Block do
       let(:top)    { -10 }
       let(:bottom) { -20 }
       its(:start)  { 
-        #Code Here 
+        subject.top.should eq(a.start)
       }
       its(:end)    { 
-        pending "Needs to be implemented" 
+        subject.bottom.should eq(a.bottom)
       }
     end
   end
