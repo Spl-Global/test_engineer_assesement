@@ -55,21 +55,21 @@ describe Block do
 
   describe "equality" do
 
-    let(:a) { Block.new(1,2) }
+    let(:a) { Block.new(1, 2) }
 
     context "when start and end are equal" do
-      let(:b) { Block.new(1,2) }
+      let(:b) { Block.new(1, 2) }
 
       it "is equal" do
-        pending "Needs to be implemented"
+        a.should eq(b)
       end
     end
 
     context "when start and end are not equal" do
-      let(:b) { Block.new(1,3) }
+      let(:b) { Block.new(1, 3) }
 
       it "is not equal" do
-        pending "Needs to be implemented"
+        a.should_not eq(b)
       end
     end
 
