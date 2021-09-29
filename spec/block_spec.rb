@@ -59,7 +59,7 @@ describe Block do
       let(:b) { Block.new(1,2) }
 
       it "is equal" do
-        expect(a == b).to be_truthy
+        expect(a).to eq(b)
       end
     end
 
@@ -67,7 +67,7 @@ describe Block do
       let(:b) { Block.new(1,3) }
 
       it "is not equal" do
-        expect(a == b).to be_falsy
+        expect(a).not_to eq(b)
       end
     end
   end
