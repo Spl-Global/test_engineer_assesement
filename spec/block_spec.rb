@@ -11,22 +11,22 @@ describe Block do
     context "when the beginning is less than the end" do
       let(:block) { Block.new(1,2) }
       it "creates the block with the specified top" do
-        block.top.should eq(1)
+        expect(block.top).to eq(1)
       end
 
       it "creates the block with the specified bottom" do
-        block.bottom.should eq(2)
+        expect(block.bottom).to eq(2)
       end
     end
 
     context "when the end is less than the beginning" do
       let(:block) { Block.new(2,1) }
       it "creates the block with the inverse start" do
-        block.top.should eq(1)
+        expect(block.top).to eq(1)
       end
 
       it "creates the block with the inverse end" do
-        block.bottom.should eq(2)
+        expect(block.bottom).to eq(2)
       end
     end
   end
@@ -38,12 +38,12 @@ describe Block do
   describe '#length' do
     it 'is 0 when start == end' do
       block = Block.new(2, 2)
-      block.length.should eq(0)
+      expect(block.length).to eq(0)
     end
 
     it 'is 1 when end == (start + 1)' do
       block = Block.new(1, 2)
-      block.length.should eq(1)
+      expect(block.length).to eq(1)
     end
   end
 
@@ -59,7 +59,7 @@ describe Block do
       let(:b) { Block.new(1,2) }
 
       it "is equal" do
-        (a == b).should eq(true)
+        expect(a == b).to be_truthy
       end
     end
 
@@ -67,7 +67,7 @@ describe Block do
       let(:b) { Block.new(1,3) }
 
       it "is not equal" do
-        (a == b).should eq(false)
+        expect(a == b).to be_falsy
       end
     end
   end
@@ -79,7 +79,7 @@ describe Block do
       let(:b) { Block.new(1,2) }
 
       it "returns 1" do
-        (a <=> b).should eq(1)
+        expect(a <=> b).to eq(1)
       end
     end
 
@@ -87,7 +87,7 @@ describe Block do
       let(:b) { Block.new(3,4) }
 
       it "returns -1" do
-        (a <=> b).should eq(-1)
+        expect(a <=> b).to eq(-1)
       end
     end
 
@@ -95,7 +95,7 @@ describe Block do
       let(:b) { Block.new(2,4) }
 
       it "returns 0" do
-        (a <=> b).should eq(0)
+        expect(a <=> b).to eq(0)
       end
     end
   end
@@ -105,13 +105,13 @@ describe Block do
 
     context "when number stay between start and end" do
       it "returns true" do
-        a.include?(3).should eq(true)
+        expect(a.include?(3)).to eq(true)
       end
     end
 
     context "when number out of start and end" do
       it "returns false" do
-        a.include?(3).should eq(true)
+        expect(a.include?(8)).to eq(false)
       end
     end
   end
@@ -131,7 +131,7 @@ describe Block do
       let(:b)    { Block.new(110, 190) }
 
       it "returns a" do
-        result.should eq([a])
+        expect(result).to eq([a])
       end
     end
 
@@ -140,7 +140,7 @@ describe Block do
       let(:b)   { Block.new(90, 210) }
 
       it "returns b" do
-        result.should eq([b])
+        expect(result).to eq([b])
       end
     end
 
@@ -149,15 +149,15 @@ describe Block do
       let(:b)   { Block.new(90, 110) }
 
       it "returns one block" do
-        result.size.should eq(1)
+        expect(result.size).to eq(1)
       end
 
       it "begins with b" do
-        result.first.top.should eq(90)
+        expect(result.first.top).to eq(90)
       end
 
       it "ends with a" do
-        result.first.bottom.should eq(200)
+        expect(result.first.bottom).to eq(200)
       end
     end
 
@@ -166,15 +166,15 @@ describe Block do
       let(:b)   { Block.new(190, 210) }
 
       it "returns one block" do
-        result.size.should eq(1)
+        expect(result.size).to eq(1)
       end
 
       it "begins with a" do
-        result.first.top.should eq(100)
+        expect(result.first.top).to eq(100)
       end
 
       it "ends with b" do
-        result.first.bottom.should eq(210)
+        expect(result.first.bottom).to eq(210)
       end
     end
 
@@ -183,7 +183,7 @@ describe Block do
       let(:b)   { Block.new(10, 20) }
 
       it "returns the original blocks" do
-        result.should eq([b, a])
+        expect(result).to eq([b, a])
       end
     end
 
@@ -192,7 +192,7 @@ describe Block do
       let(:b)  { Block.new(a.start, a.end) }
 
       it "returns a" do
-        result.should eq([a])
+        expect(result).to eq([a])
       end
     end
   end
@@ -208,15 +208,15 @@ describe Block do
     context "with positive value padding (10, 20)" do
       let(:top)    { 10 }
       let(:bottom) { 20 }
-      its(:start)  { should eq(90) }
-      its(:end)    { should eq(220) }
+      its(:start)  { is_expected.to eq(90) }
+      its(:end)    { is_expected.to eq(220) }
     end
 
     context "with negative value padding (-10, -20)" do
       let(:top)    { -10 }
       let(:bottom) { -20 }
-      its(:start)  { should eq(100) }
-      its(:end)    { should eq(200) }
+      its(:start)  { is_expected.to eq(100) }
+      its(:end)    { is_expected.to eq(200) }
     end
   end
 
@@ -236,26 +236,26 @@ describe Block do
       let(:b)    { Block.new(150, 170) }
 
       it "returns two blocks" do
-        result.size.should eq(2)
+        expect(result.size).to eq(2)
       end
 
       describe "first block" do
         it "begins at the original point" do
-          result.first.top.should eq(a.start)
+          expect(result.first.top).to eq(a.start)
         end
 
         it "ends at the start of b" do
-          result.first.end.should eq(b.start)
+          expect(result.first.end).to eq(b.start)
         end
       end
 
       describe "second block" do
         it "begins at the end of b" do
-          result.last.start.should eq(b.end)
+          expect(result.last.start).to eq(b.end)
         end
 
         it "ends at the original point" do
-          result.last.end.should eq(a.end)
+          expect(result.last.end).to eq(a.end)
         end
       end
     end
@@ -264,21 +264,21 @@ describe Block do
       let(:b) { Block.new(90, 210) }
 
       it "returns a nil block" do
-        result.first.should eq(nil)
+        expect(result.first).to eq(nil)
       end
     end
 
     context "when b covers a with a shared beginning" do
       let(:b) { Block.new(a.start, a.end + 10) }
       it "returns a nil block" do
-        result.first.should eq(nil)
+        expect(result.first).to eq(nil)
       end
     end
 
     context "when b covers a with a shared ending" do
       let(:b) { Block.new(a.start - 10, a.end) }
       it "returns a nil block" do
-        result.first.should eq(nil)
+        expect(result.first).to eq(nil)
       end
     end
 
@@ -287,15 +287,15 @@ describe Block do
       let(:b) { Block.new(a.start, a.start + 10) }
 
       it "returns a single block" do
-        result.size.should eq(1)
+        expect(result.size).to eq(1)
       end
 
       it "begins at the end of b" do
-        result.first.start.should eq(b.end)
+        expect(result.first.start).to eq(b.end)
       end
 
       it "ends at the original point" do
-        result.first.end.should eq(a.end)
+        expect(result.first.end).to eq(a.end)
       end
     end
 
@@ -304,15 +304,15 @@ describe Block do
       let(:b) { Block.new(190, 200) }
 
       it "returns a single block" do
-        result.size.should eq(1)
+        expect(result.size).to eq(1)
       end
 
       it "begins at the original point" do
-        result.first.start.should eq(a.start)
+        expect(result.first.start).to eq(a.start)
       end
 
       it "ends at the start of b" do
-        result.first.end.should eq(b.start)
+        expect(result.first.end).to eq(b.start)
       end
     end
 
@@ -320,7 +320,7 @@ describe Block do
       let(:b) { Block.new(0, 100) }
 
       it "returns self" do
-        result.should eq([a])
+        expect(result).to eq([a])
       end
     end
 
@@ -328,7 +328,7 @@ describe Block do
       let(:b) { Block.new(a.start, a.end) }
 
       it "returns empty" do
-        result.should eq([])
+        expect(result).to eq([])
       end
     end
   end
@@ -352,26 +352,26 @@ describe Block do
     let(:result) { a - others }
 
     it "returns each of the remaining spaces" do
-      result.should eq([Block.new(110, 130), Block.new(140, 180)])
+      expect(result).to eq([Block.new(110, 130), Block.new(140, 180)])
     end
 
     describe "first block" do
       it "starts where b ended" do
-        result.first.start.should eq(b.end)
+        expect(result.first.start).to eq(b.end)
       end
 
       it "ends where c starts" do
-        result.first.end.should eq(c.start)
+        expect(result.first.end).to eq(c.start)
       end
     end
 
     describe "second block" do
       it "starts where c ended" do
-        result.last.start.should eq(c.end)
+        expect(result[1].start).to eq(c.end)
       end
 
       it "ends where d starts" do
-        result.last.end.should eq(d.start)
+        expect(result[1].end).to eq(d.start)
       end
     end
 
@@ -396,36 +396,36 @@ describe Block do
     let(:result)  { a.merge([b,c,d,e]) }
 
     it "collapses contiguous and overlapping blocks" do
-      result.should eq([Block.new(10, 25), Block.new(30, 45), Block.new(55, 65)])
+      expect(result).to eq([Block.new(10, 25), Block.new(30, 45), Block.new(55, 65)])
     end
 
     describe "first block (collapsed contiguous)" do
       it "start aligns with start of A" do
-        result[0].start.should eq(a.start)
+        expect(result[0].start).to eq(a.start)
       end
 
       it "end aligns with end of B" do
-        result[0].end.should eq(b.end)
+        expect(result[0].end).to eq(b.end)
       end
     end
 
     describe "second block (collapsed overlapping)" do
       it "start aligns with start of C" do
-        result[1].start.should eq(c.start)
+        expect(result[1].start).to eq(c.start)
       end
 
       it "end aligns with end of D" do
-        result[1].end.should eq(d.end)
+        expect(result[1].end).to eq(d.end)
       end
     end
 
     describe "third block (isolated)" do
       it "starts as it was" do
-        result[2].start.should eq(e.start)
+        expect(result[2].start).to eq(e.start)
       end
 
       it "ends as it was" do
-        result[2].end.should eq(e.end)
+        expect(result[2].end).to eq(e.end)
       end
     end
 
@@ -444,11 +444,11 @@ describe Block do
     context "when the limited block overlaps with the limiter's beginning" do
       let(:a)       { Block.new(-10, 10) }
       it "trims the top of the block" do
-        result.top.should eq(0)
+        expect(result.top).to eq(0)
       end
 
       it "keeps the original end" do
-        result.end.should eq(a.end)
+        expect(result.end).to eq(a.end)
       end
     end
 
@@ -456,11 +456,11 @@ describe Block do
       let(:a) { Block.new(90, 110) }
 
       it "trims the bottom of the block to the limiter's end" do
-        result.bottom.should eq(b.end)
+        expect(result.bottom).to eq(b.end)
       end
 
       it "keeps the original beginning" do
-        result.start.should eq(a.start)
+        expect(result.start).to eq(a.start)
       end
     end
 
