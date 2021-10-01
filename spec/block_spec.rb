@@ -36,12 +36,16 @@ describe Block do
   # ===========
 
   describe '#length' do
+    let(:a) { Block.new(1, 1) }
+
     it 'is 0 when start == end' do
-      pending "Needs to be implemented"
+      a.length.should eq(0)
     end
 
+    let(:b) { Block.new(1, 2) }
+
     it 'is 1 when end == (start + 1)' do
-      pending "Needs to be implemented"
+      b.length.should eq(1)
     end
   end
 
@@ -51,21 +55,21 @@ describe Block do
 
   describe "equality" do
 
-    let(:a) { Block.new(1,2) }
+    let(:a) { Block.new(1, 2) }
 
     context "when start and end are equal" do
-      let(:b) { Block.new(1,2) }
+      let(:b) { Block.new(1, 2) }
 
       it "is equal" do
-        pending "Needs to be implemented"
+        a.should eq(b)
       end
     end
 
     context "when start and end are not equal" do
-      let(:b) { Block.new(1,3) }
+      let(:b) { Block.new(1, 3) }
 
       it "is not equal" do
-        pending "Needs to be implemented"
+        a.should_not eq(b)
       end
     end
 
@@ -86,7 +90,7 @@ describe Block do
       let(:b)    { Block.new(110, 190) }
 
       it "returns a" do
-        pending "Needs to be implemented"
+        result.first.should eq(a)
       end
     end
 
@@ -95,7 +99,7 @@ describe Block do
       let(:b)   { Block.new(90, 210) }
 
       it "returns b" do
-        pending "Needs to be implemented"
+        result.first.should eq(b)
       end
     end
 
@@ -103,16 +107,17 @@ describe Block do
 
       let(:b)   { Block.new(90, 110) }
 
-      it "returns one block" do
-        pending "Needs to be implemented"
+      it "returns one block begins with b and ends with a" do
+        result.first.top.should eq(b.top)
+        result.first.bottom.should eq(a.bottom)
       end
       
       it "begins with b" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(b.top)
       end
       
       it "ends with a" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(a.bottom)
       end
     end
     
@@ -120,16 +125,17 @@ describe Block do
       
       let(:b)   { Block.new(190, 210) }
       
-      it "returns one block" do
-        pending "Needs to be implemented"
+      it "returns one block begins with a and ends with b" do
+        result.first.top.should eq(a.top)
+        result.first.bottom.should eq(b.bottom)
       end
       
       it "begins with a" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(a.top)
       end
       
       it "ends with b" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(b.bottom)
       end
     end
     
@@ -138,7 +144,8 @@ describe Block do
       let(:b)   { Block.new(10, 20) }
       
       it "returns the original blocks" do
-        pending "Needs to be implemented"
+        result.first.should eq(b)
+        result.last.should eq(a)
       end
     end
     
@@ -146,8 +153,9 @@ describe Block do
       
       let(:b)  { Block.new(a.start, a.end) }
       
-      it "returns a" do
-        pending "Needs to be implemented"
+      it "only returns a" do
+        result.first.should eq(a)
+        result.last.should eq(a)
       end
     end
   end
@@ -164,9 +172,10 @@ describe Block do
       let(:top)    { 10 }
       let(:bottom) { 20 }
       its(:start)  { 
-        pending "Needs to be implemented" }
+        subject.top.should eq(a.start - top)
+      }
       its(:end)    { 
-        pending "Needs to be implemented" 
+        subject.bottom.should eq(a.bottom + bottom)
       }
     end
     
@@ -174,10 +183,10 @@ describe Block do
       let(:top)    { -10 }
       let(:bottom) { -20 }
       its(:start)  { 
-        #Code Here 
+        subject.top.should eq(a.start)
       }
       its(:end)    { 
-        pending "Needs to be implemented" 
+        subject.bottom.should eq(a.bottom)
       }
     end
   end
@@ -198,26 +207,26 @@ describe Block do
       let(:b)    { Block.new(150, 170) }
 
       it "returns two blocks" do
-        pending "Needs to be implemented"
+        result.count.should eq(2)
       end
       
       describe "first block" do
         it "begins at the original point" do
-          pending "Needs to be implemented"
+          result.first.top.should eq(a.top)
         end
         
         it "ends at the start of b" do
-          pending "Needs to be implemented"
+          result.first.bottom.should eq(b.top)
         end
       end
       
       describe "second block" do
         it "begins at the end of b" do
-          pending "Needs to be implemented"
+          result.last.top.should eq(b.bottom)
         end
         
         it "ends at the original point" do
-          pending "Needs to be implemented"
+          result.last.bottom.should eq(a.bottom)
         end
       end
     end
@@ -226,21 +235,21 @@ describe Block do
       let(:b) { Block.new(90, 210) }
       
       it "returns a nil block" do
-        pending "Needs to be implemented"
+        result.should eq([])
       end
     end
     
     context "when b covers a with a shared beginning" do
       let(:b) { Block.new(a.start, a.end + 10) }
       it "returns a nil block" do
-        pending "Needs to be implemented"
+        result.should eq([])
       end
     end
     
     context "when b covers a with a shared ending" do
       let(:b) { Block.new(a.start - 10, a.end) }
       it "returns a nil block" do
-        pending "Needs to be implemented"
+        result.should eq([])
       end
     end
 
@@ -249,15 +258,15 @@ describe Block do
       let(:b) { Block.new(a.start, a.start + 10) }
       
       it "returns a single block" do
-        pending "Needs to be implemented"
+        result.count.should eq(1)
       end
       
       it "begins at the end of b" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(b.bottom)
       end
       
       it "ends at the original point" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(a.bottom)
       end
     end
 
@@ -266,15 +275,15 @@ describe Block do
       let(:b) { Block.new(190, 200) }
       
       it "returns a single block" do
-        pending "Needs to be implemented"
+        result.count.should eq(1)
       end
       
       it "begins at the original point" do
-        pending "Needs to be implemented"
+        result.first.top.should eq(a.top)
       end
       
       it "ends at the start of b" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq(b.top)
       end
     end
     
@@ -282,7 +291,7 @@ describe Block do
       let(:b) { Block.new(0, 100) }
 
       it "returns self" do
-        pending "Needs to be implemented"
+        result.first.should eq(a)
       end
     end
     
@@ -290,7 +299,7 @@ describe Block do
       let(:b) { Block.new(a.start, a.end) }
 
       it "returns empty" do
-        pending "Needs to be implemented"
+        result.should eq([])
       end
     end
   end
@@ -314,26 +323,26 @@ describe Block do
     let(:result) { a - others }
 
     it "returns each of the remaining spaces" do
-      pending "Needs to be implemented"
+      result.count.should eq(2)
     end
     
     describe "first block" do
       it "starts where b ended" do
-        pending "Needs to be implemented"
+        result.first.top.should eq (b.bottom)
       end
       
       it "ends where c starts" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq (c.top)
       end
     end
     
     describe "second block" do
       it "starts where c ended" do
-        pending "Needs to be implemented"
+        result.last.top.should eq (c.bottom)
       end
       
       it "ends where d starts" do
-        pending "Needs to be implemented"
+        result.last.bottom.should eq (d.top)
       end
     end
 
@@ -358,36 +367,36 @@ describe Block do
     let(:result)  { a.merge([b,c,d,e]) }
 
     it "collapses contiguous and overlapping blocks" do
-      pending "Needs to be implemented"
+      result.count.should eq(3)
     end
     
     describe "first block (collapsed contiguous)" do
       it "start aligns with start of A" do
-        pending "Needs to be implemented"
+        result.first.top.should eq (a.top)
       end
       
       it "end aligns with end of B" do
-        pending "Needs to be implemented"
+        result.first.bottom.should eq (b.bottom)
       end
     end
     
     describe "second block (collapsed overlapping)" do
       it "start aligns with start of C" do
-        pending "Needs to be implemented"
+        result[1].top.should eq (c.top)
       end
       
       it "end aligns with end of D" do
-        pending "Needs to be implemented"
+        result[1].bottom.should eq (d.bottom)
       end
     end
     
     describe "third block (isolated)" do
       it "starts as it was" do
-        pending "Needs to be implemented"
+        result.last.top.should eq(e.top)
       end
       
       it "ends as it was" do
-        pending "Needs to be implemented"
+        result.last.bottom.should eq(e.bottom)
       end
     end
 
@@ -405,12 +414,13 @@ describe Block do
 
     context "when the limited block overlaps with the limiter's beginning" do
       let(:a)       { Block.new(-10, 10) }
-      it "trims the top of the block" do
-        pending "Needs to be implemented"
+
+      it "keeps the max top" do
+        result.top.should eq (b.top)
       end
       
-      it "keeps the original end" do
-        pending "Needs to be implemented"
+      it "keeps the min bottom" do
+        result.bottom.should eq (a.bottom)
       end
     end
     
@@ -418,11 +428,11 @@ describe Block do
       let(:a) { Block.new(90, 110) }
       
       it "trims the bottom of the block to the limiter's end" do
-        pending "Needs to be implemented"
+        result.bottom.should eq (b.bottom)
       end
       
       it "keeps the original beginning" do
-        pending "Needs to be implemented"
+        result.top.should eq (a.top)
       end
     end
 
